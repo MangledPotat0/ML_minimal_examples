@@ -131,7 +131,7 @@ def data_etl(spark) -> DataFrame:
 def main(spark: SparkSession):
 
     # Prepare the data
-    train, val, test = data_etl(spark).randomSplit([0.75, 0.05, 0.2],
+    train, val, test = data_etl(spark).randomSplit([0.7, 0.05, 0.25],
                                                    seed=42)
     labels = [row.__getattr__("class")
               for row in train.select("class").distinct().collect()]
@@ -155,7 +155,7 @@ def main(spark: SparkSession):
         y=train[1],
         validation_data=val,
         batch_size=8,
-        epochs=200
+        epochs=250
     )
 
     # Test model performance
@@ -167,6 +167,8 @@ def main(spark: SparkSession):
     cmat = confusion_matrix(np.argmax(test[1],axis=1),
                             np.argmax(predictions, axis=1))
     ax = sns.heatmap(cmat, annot=True, xticklabels=labels, yticklabels=labels)
+    plt.ylabel("Ground Truth")
+    plt.xlabel("Predictions")
     ax.xaxis.tick_top()
     plt.savefig("confusion_matrix.png")
     plt.close()
