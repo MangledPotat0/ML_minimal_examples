@@ -1,0 +1,16 @@
+colorcet
+ffmpeg
+h5py
+keras
+matplotlib
+numpy
+opencv-python-headless
+pandas
+Pillow
+psutil
+pyspark
+scikit-learn
+scipy
+seaborn
+tensorflow
+torch
