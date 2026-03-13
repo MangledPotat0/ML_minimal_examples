@@ -9,4 +9,4 @@ The point of this codebase is not to do cutting edge project, but to show my cod
 This model can have arbitrary number of hidden layers (keras `Dense` layers) of arbitrary sizes, but the default implementation in this codebase has just one hidden layer with just one neuron (this is enough to get pretty good accuracy).
 
 Here's the result when the code is run as-is without modification:
-![confusion matrix](https://raw.githubusercontent.com/MangledPotat0/ML_minimal_examples/refs/heads/main/confusion_matrix.png)
+![confusion matrix](https://raw.githubusercontent.com/MangledPotat0/ML_minimal_examples/refs/heads/main/keras_dense_confusion_matrix.png)
