@@ -17,7 +17,7 @@ from pyspark.sql import SparkSession
 import seaborn as sns
 
 # Local module imports
-from core.spark_etl import data_etl
+from core.spark_etl import data_etl, numpify
 from core.plots import confusion_matrix
 
 def build_model(input_shape: tuple,
@@ -51,16 +51,19 @@ def build_model(input_shape: tuple,
 def main(spark: SparkSession):
 
     # Prepare the data
-    train, val, test = data_etl(spark).randomSplit([0.7, 0.05, 0.25],
-                                                   seed=42)
+    train, val, test = data_etl(spark, ytype=YType.ONEHOT) \
+                            .randomSplit([0.7, 0.05, 0.25], seed=42)
     labels = [row.__getattr__("class")
               for row in train.select("class").distinct().collect()]
+    train, val, test = numpify(train, val, test)
+    """
     train = [np.array(train.select(label).collect()).squeeze()
              for label in ["features", "class_encoded"]]
     val = [np.array(val.select(label).collect()).squeeze()
            for label in ["features", "class_encoded"]]
     test = [np.array(test.select(label).collect()).squeeze()
              for label in ["features", "class_encoded"]]
+    """
 
     # Prepare the model
     input_size = len(train[0][0])
