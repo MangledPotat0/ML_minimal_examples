@@ -13,8 +13,8 @@ This model can have arbitrary number of hidden layers (keras `Dense` layers) of 
 
 Here's the result when the code is run as-is without modification.
 
-Using keras sequential model:
+Using keras sequential model:  
 ![sequential model confusion matrix](https://raw.githubusercontent.com/MangledPotat0/ML_minimal_examples/refs/heads/main/keras_dense_confusion_matrix.png)
 
-Using sklearn LogisticRegression model:
+Using sklearn LogisticRegression model:  
 ![sklearn logreg confusion matrix](https://raw.githubusercontent.com/MangledPotat0/ML_minimal_examples/refs/heads/main/logreg_confusion_matrix.png)
