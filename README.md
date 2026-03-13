@@ -3,6 +3,8 @@
 ## How to try the code out
 Build the Docker container using `setup.sh`. When the container is built, run `launch.sh` to enter the work environment. Then, run `python keras_iris.py`.
 
+The point of this codebase is not to do cutting edge project, but to show my coding style. What is shown in this simple script is my current style of writing code WITHOUT any AI tool, not even autocompletion. I wrote the code using vim inside the Docker container included in this repo and you will find no additional help in it other than the built-in default syntax highlighting.
+
 ## Some discussions
 This model can have arbitrary number of hidden layers (keras `Dense` layers) of arbitrary sizes, but the default implementation in this codebase has just one hidden layer with just one neuron (this is enough to get pretty good accuracy).
 
